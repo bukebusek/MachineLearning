@@ -1,6 +1,6 @@
 import numpy as np
 
-class LinearRegresssion:
+class LinearRegression:
     def __init__(self):
         """初始化"""
         self.coef_ = None
@@ -11,7 +11,7 @@ class LinearRegresssion:
         """训练模型"""
         assert X_train.shape[0] == y_train.shape[0], "Error!"
 
-        def J(theta, X_b, y): try：
+        def J(theta, X_b, y):
             try:
                 return np.sum((y - X_b.dot(theta)) ** 2) / len(y)
             except:
@@ -35,7 +35,7 @@ class LinearRegresssion:
                 theta = theta - eta * gradient
                 if (abs(J(theta, X_b, y) - J(last_theta, X_b, y)) < epsilon):
                     break
-                cur_iter += 1 return theta
+                cur_iter += 1
 
             return theta
 
@@ -59,10 +59,10 @@ class LinearRegresssion:
     def score(self, X_test, y_test):
         """测试准确度"""
         y_predict = self.predict(X_test)
-        return 1 - (np.sum((y_test - y_predict)**2) / len(y_test))/np.var(y_test
+        return 1 - (np.sum((y_test - y_predict)**2) / len(y_test))/np.var(y_test)
 
     def __repr__(self):
-        return " LinearRegression"
+        return "机器学习第一周课程LinearRegression"
 
 import matplotlib.pyplot as plt
 from sklearn import datasets
@@ -88,8 +88,7 @@ boston = datasets.load_boston()
 X = boston.data[:,3:6]#使用多个特征，注意更改此处使用boston房价数据集的13个特征或其他特征测试效果
 y = boston.target
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
-state=1)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
 
 reg = LinearRegression()
 
